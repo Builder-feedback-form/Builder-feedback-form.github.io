@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Visit Feedback Form - ABS Architects (PDF Ready)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .print-controls {
+            text-align: center;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .print-btn {
+            background: #ff7c00;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            box-shadow: 0 4px 15px rgba(255, 124, 0, 0.3);
+        }
+
+        .print-btn:hover {
+            background: #e56900;
+            transform: translateY(-2px);
+        }
+
+        .save-pdf-btn {
+            background: #27ae60;
+        }
+
+        .save-pdf-btn:hover {
+            background: #219a52;
+        }
+
+        /* PDF Page Styling */
+        .pdf-page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #000;
+            position: relative;
+        }
+
+        /* Header */
+        .form-header {
+            text-align: center;
+            border-bottom: 3px solid #ff7c00;
+            padding-bottom: 10mm;
+            margin-bottom: 6mm;
+        }
+
+        .company-logo {
+            font-size: 28pt;
+            font-weight: 900;
+            color: #ff7c00;
+            margin-bottom: 2mm;
+            letter-spacing: -1px;
+        }
+
+        .company-subtitle {
+            font-size: 8pt;
+            color: #666;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1mm;
+        }
+
+        .company-name {
+            font-size: 11pt;
+            color: #000;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 3mm;
+        }
+
+        .form-title {
+            font-size: 16pt;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .project-name {
+            font-size: 12pt;
+            color: #000;
+            margin-top: 2mm;
+            font-style: italic;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: #fff8dc;
+            border: 1px solid #ddd;
+            padding: 3mm;
+            margin-bottom: 4mm;
+            text-align: center;
+            font-size: 9pt;
+            border-radius: 2mm;
+        }
+
+        /* Form Sections */
+        .form-section {
+            margin-bottom: 4mm;
+            border: 1px solid #000;
+        }
+
+        .section-header {
+            background: #ff7c00;
+            color: white;
+            padding: 2mm;
+            font-size: 10pt;
+            font-weight: 700;
+        }
+
+        .section-content {
+            padding: 3mm;
+        }
+
+        /* Form Elements */
+        .form-row {
+            display: flex;
+            margin-bottom: 3mm;
+            gap: 4mm;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group.full-width {
+            width: 100%;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 9pt;
+            margin-bottom: 1mm;
+            display: block;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 5mm;
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            display: block;
+            margin-top: 1mm;
+        }
+
+        .form-textarea {
+            width: 100%;
+            height: 15mm;
+            border: 1px solid #000;
+            background: transparent;
+            margin-top: 1mm;
+        }
+
+        /* Rating Grid */
+        .rating-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2mm;
+        }
+
+        .rating-item {
+            border: 1px solid #ddd;
+            padding: 2mm;
+            background: #fafafa;
+        }
+
+        .rating-label {
+            font-weight: 600;
+            font-size: 9pt;
+            margin-bottom: 1mm;
+            display: block;
+        }
+
+        .rating-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1mm;
+        }
+
+        .rating-option {
+            text-align: center;
+            font-size: 8pt;
+        }
+
+        .rating-checkbox {
+            width: 4mm;
+            height: 4mm;
+            border: 1.5px solid #000;
+            display: block;
+            margin: 0 auto 1mm auto;
+        }
+
+        /* Checkboxes */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1mm;
+            margin-top: 1mm;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+            margin-bottom: 1mm;
+            font-size: 9pt;
+        }
+
+        .checkbox {
+            width: 3mm;
+            height: 3mm;
+            border: 1px solid #000;
+            flex-shrink: 0;
+        }
+
+        .builder-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5mm;
+            margin-top: 2mm;
+            font-size: 9pt;
+        }
+
+        .builder-option {
+            display: flex;
+            align-items: center;
+            gap: 1mm;
+        }
+
+        /* Footer */
+        .form-footer {
+            margin-top: 4mm;
+            padding-top: 3mm;
+            border-top: 1px solid #000;
+            text-align: center;
+            font-size: 9pt;
+        }
+
+        .signature-line {
+            margin-top: 4mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .signature-item {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .line {
+            border-bottom: 1px solid #000;
+            width: 40mm;
+            height: 1mm;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .print-controls {
+                display: none;
+            }
+            
+            .pdf-page {
+                box-shadow: none;
+                margin: 0;
+                width: auto;
+                height: auto;
+                padding: 15mm;
+            }
+            
+            .form-section {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pdf-page {
+                width: 100%;
+                padding: 10mm;
+                font-size: 10pt;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 2mm;
+            }
+            
+            .rating-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .builder-options {
+                flex-direction: column;
+                gap: 2mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-controls">
+        <h3>📋 Site Visit Feedback Form</h3>
+        <p>Ready to print on A4 paper</p>
+        <button class="print-btn" onclick="window.print()">🖨️ Print Form</button>
+        <button class="print-btn save-pdf-btn" onclick="savePDF()">💾 Save as PDF</button>
+    </div>
+
+    <div class="pdf-page">
+        <!-- Header -->
+        <div class="form-header">
+            <div class="company-logo">ABS</div>
+            <div class="company-subtitle">ARCHITECTURE - BUILDINGS & SPACES</div>
+            <div class="company-name">ARCHITECTS</div>
+            <div class="form-title">Site Visit Feedback Form</div>
+            <div class="project-name">(Redevelopment of Dwarkesh Dham chsl)</div>
+        </div>
+
+        <div class="instructions">
+            📝 Please fill out this form using a pen. Check boxes with ✓ and write clearly in the provided spaces.
+        </div>
+
+        <!-- Visit Information -->
+        <div class="form-section">
+            <div class="section-header">📋 VISIT INFORMATION</div>
+            <div class="section-content">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Your Name <span class="required">*</span></label>
+                        <div class="form-input"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Wing</label>
+                        <div class="form-input"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Flat / Shop / Unit Number <span class="required">*</span></label>
+                    <div class="form-input"></div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Visit Date <span class="required">*</span></label>
+                        <div class="form-input"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Site Location <span class="required">*</span></label>
+                        <div class="form-input"></div>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Builder/Company <span class="required">*</span></label>
+                    <div class="builder-options">
+                        <div class="builder-option">
+                            <div class="checkbox"></div>
+                            <span>EMPIRE REALTY</span>
+                        </div>
+                        <div class="builder-option">
+                            <div class="checkbox"></div>
+                            <span>SANMATI REALITIES LLP</span>
+                        </div>
+                        <div class="builder-option">
+                            <div class="checkbox"></div>
+                            <span>THE GREEN VENTUREZ SPACES</span>
+                        </div>
+                        <div class="builder-option">
+                            <div class="checkbox"></div>
+                            <span>Other: <span class="line" style="width: 25mm;"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Ratings -->
+        <div class="form-section">
+            <div class="section-header">⭐ PERFORMANCE RATINGS</div>
+            <div class="section-content">
+                <div class="rating-grid">
+                    <div class="rating-item">
+                        <label class="rating-label">Overall Satisfaction <span class="required">*</span></label>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                1<br>Poor
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                2<br>Fair
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                3<br>Good
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                4<br>V.Good
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                5<br>Excellent
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-item">
+                        <label class="rating-label">Quality of Work <span class="required">*</span></label>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                1
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                2
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                3
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                4
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                5
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rating-item">
+                        <label class="rating-label">Communication <span class="required">*</span></label>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                1
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                2
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                3
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                4
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                5
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rating-item">
+                        <label class="rating-label">Timeline Adherence <span class="required">*</span></label>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                1
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                2
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                3
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                4
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                5
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rating-item">
+                        <label class="rating-label">Safety Standards <span class="required">*</span></label>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                1
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                2
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                3
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                4
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                5
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rating-item">
+                        <label class="rating-label">Professionalism <span class="required">*</span></label>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                1
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                2
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                3
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                4
+                            </div>
+                            <div class="rating-option">
+                                <div class="rating-checkbox"></div>
+                                5
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specific Observations -->
+        <div class="form-section">
+            <div class="section-header">🔍 SPECIFIC OBSERVATIONS</div>
+            <div class="section-content">
+                <div style="margin-bottom: 3mm;">
+                    <label class="form-label">What impressed you most during the visit? (Check all that apply)</label>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Quality of Materials</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Skilled Workforce</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Safety Measures</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Site Organization</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Progress Speed</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Site Cleanliness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label">Areas that need improvement: (Check all that apply)</label>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Communication</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Timeline Management</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Safety Protocols</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Site Organization</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Quality Control</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="checkbox"></div>
+                            <span>Waste Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Comments -->
+        <div class="form-section">
+            <div class="section-header">💭 ADDITIONAL COMMENTS</div>
+            <div class="section-content">
+                <label class="form-label">Share any additional feedback, suggestions, or observations:</label>
+                <div class="form-textarea"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="form-footer">
+            <strong>Thank you for your feedback!</strong><br>
+            Please return this completed form to: <strong>architectbharat@gmail.com</strong>
+
+            <div class="signature-line">
+                <div class="signature-item">
+                    <span>Form Date:</span>
+                    <div class="line"></div>
+                </div>
+                <div class="signature-item">
+                    <span>Signature:</span>
+                    <div class="line" style="width: 50mm;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function savePDF() {
+            // For modern browsers, use print dialog to save as PDF
+            window.print();
+        }
+    </script>
+</body>
+</html>
