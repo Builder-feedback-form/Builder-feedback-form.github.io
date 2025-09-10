@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Builder Site Visit Feedback Form</title>
+    <title>Site Visit Feedback Form - ABS Architects</title>
     <style>
         * {
             margin: 0;
@@ -12,68 +12,88 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 10px;
+            color: #2c3e50;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background: linear-gradient(135deg, #ff7c00, #ff9500);
             color: white;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
         }
 
-        .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 300;
+        .abs-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
         }
 
-        .header p {
+        .abs-subtitle {
+            font-size: 0.8rem;
+            margin-bottom: 3px;
             opacity: 0.9;
-            font-size: 1.1rem;
         }
 
-        .form-container {
-            padding: 40px;
+        .abs-name {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .project-name {
+            font-size: 1rem;
+            margin-top: 5px;
+            opacity: 0.95;
+        }
+
+        .form-content {
+            padding: 20px;
         }
 
         .section {
-            margin-bottom: 30px;
-            padding: 25px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .section-title {
-            font-size: 1.3rem;
+        .section-header {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            font-weight: 700;
             color: #2c3e50;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .section-content {
+            padding: 15px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .form-row {
             display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .form-row .form-group {
@@ -83,117 +103,159 @@
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: 600;
-            color: #34495e;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .required {
+            color: #e74c3c;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            font-family: Arial, sans-serif;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #ff7c00;
+            box-shadow: 0 0 0 3px rgba(255, 124, 0, 0.1);
         }
 
         textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
 
-        .rating-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 20px;
+        .rating-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
         }
 
         .rating-item {
-            flex: 1;
-            min-width: 200px;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
             border: 1px solid #e9ecef;
         }
 
-        .rating-item label {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .star-rating {
-            display: flex;
-            gap: 5px;
-        }
-
-        .star {
-            font-size: 24px;
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .star:hover,
-        .star.active {
-            color: #ffd700;
-        }
-
         .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 8px;
         }
 
         .checkbox-item {
             display: flex;
             align-items: center;
             gap: 8px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(255, 124, 0, 0.1);
         }
 
         .checkbox-item input[type="checkbox"] {
-            width: auto;
+            width: 18px;
+            height: 18px;
+            accent-color: #ff7c00;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 0.85rem;
         }
 
         .submit-section {
+            background: #f8f9fa;
+            padding: 20px;
             text-align: center;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px solid #e9ecef;
+            border-top: 2px solid #ff7c00;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff7c00, #ff9500);
             color: white;
             padding: 15px 40px;
             border: none;
-            border-radius: 50px;
+            border-radius: 25px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 124, 0, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .success-message {
             display: none;
             background: #d4edda;
             color: #155724;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 8px;
             text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .hosting-info {
+            background: #e8f4fd;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
@@ -201,397 +263,253 @@
                 flex-direction: column;
                 gap: 10px;
             }
-
-            .rating-group {
-                flex-direction: column;
-                gap: 15px;
+            
+            .rating-grid {
+                grid-template-columns: 1fr;
             }
-
-            .rating-item {
-                min-width: auto;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .form-container {
-                padding: 20px;
-            }
-
-            .section {
-                padding: 20px;
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="hosting-info">
+        <strong>📱 Easy Hosting Instructions:</strong><br>
+        1. Save this file as "feedback-form.html"<br>
+        2. Go to <strong>netlify.com/drop</strong><br>
+        3. Drag this file to upload<br>
+        4. Get instant shareable link!
+    </div>
+
     <div class="container">
         <div class="header">
-            <h1>🏗️ Site Visit Feedback Form</h1>
-            <p>Help us improve by sharing your experience with our builders</p>
+            <div class="abs-logo">ABS</div>
+            <div class="abs-subtitle">ARCHITECTURE - BUILDINGS & SPACES</div>
+            <div class="abs-name">ARCHITECTS</div>
+            <div class="form-title">Site Visit Feedback Form</div>
+            <div class="project-name">(Redevelopment of Dwarkesh Dham chsl)</div>
         </div>
 
-        <div class="form-container">
-            <div class="success-message" id="successMessage">
-                ✅ Thank you! Your feedback has been submitted successfully.
-            </div>
+        <div class="success-message" id="successMessage"></div>
+        <div class="error-message" id="errorMessage"></div>
 
+        <div class="form-content">
             <form id="feedbackForm">
                 <div class="section">
-                    <h2 class="section-title">📋 Visit Information</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="visitorName">Your Name *</label>
-                            <input type="text" id="visitorName" name="visitorName" required>
+                    <div class="section-header">📋 Visit Information</div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="visitorName">Your Name <span class="required">*</span></label>
+                                <input type="text" id="visitorName" name="visitorName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="wing">Wing</label>
+                                <input type="text" id="wing" name="wing" placeholder="e.g., A, B, Tower-1">
+                            </div>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="visitorEmail">Email Address *</label>
-                            <input type="email" id="visitorEmail" name="visitorEmail" required>
+                            <label for="unitNumber">Flat / Shop / Unit Number <span class="required">*</span></label>
+                            <input type="text" id="unitNumber" name="unitNumber" placeholder="e.g., 101, Shop-5, A-204" required>
                         </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="visitDate">Visit Date *</label>
-                            <input type="date" id="visitDate" name="visitDate" required>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="visitDate">Visit Date <span class="required">*</span></label>
+                                <input type="date" id="visitDate" name="visitDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="siteLocation">Site Location <span class="required">*</span></label>
+                                <input type="text" id="siteLocation" name="siteLocation" placeholder="Enter site/project name" required>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="siteLocation">Site Location *</label>
-                            <select id="siteLocation" name="siteLocation" required>
-                                <option value="">Select Site</option>
-                                <option value="downtown-project">Downtown Commercial Project</option>
-                                <option value="residential-phase1">Residential Phase 1</option>
-                                <option value="residential-phase2">Residential Phase 2</option>
-                                <option value="industrial-complex">Industrial Complex</option>
-                                <option value="mixed-use-development">Mixed-Use Development</option>
-                                <option value="other">Other</option>
+                            <label for="builderCompany">Builder/Company <span class="required">*</span></label>
+                            <select id="builderCompany" name="builderCompany" required>
+                                <option value="">Select Builder</option>
+                                <option value="EMPIRE REALTY">EMPIRE REALTY</option>
+                                <option value="SANMATI REALITIES LLP">SANMATI REALITIES LLP</option>
+                                <option value="THE GREEN VENTUREZ SPACES">THE GREEN VENTUREZ SPACES</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="builderCompany">Builder/Company *</label>
-                        <select id="builderCompany" name="builderCompany" required>
-                            <option value="">Select Builder</option>
-                            <option value="alpha-construction">Alpha Construction Ltd.</option>
-                            <option value="beta-builders">Beta Builders Inc.</option>
-                            <option value="gamma-group">Gamma Construction Group</option>
-                            <option value="delta-development">Delta Development Co.</option>
-                            <option value="epsilon-enterprises">Epsilon Enterprises</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
                 </div>
 
                 <div class="section">
-                    <h2 class="section-title">⭐ Performance Ratings</h2>
-                    <div class="rating-group">
-                        <div class="rating-item">
-                            <label>Overall Satisfaction</label>
-                            <div class="star-rating" data-rating="overall">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
+                    <div class="section-header">⭐ Performance Ratings</div>
+                    <div class="section-content">
+                        <div class="rating-grid">
+                            <div class="rating-item">
+                                <label for="overallRating">Overall Satisfaction <span class="required">*</span></label>
+                                <select id="overallRating" name="overallRating" required>
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Average</option>
+                                    <option value="2">2 - Poor</option>
+                                    <option value="1">1 - Very Poor</option>
+                                </select>
                             </div>
-                            <input type="hidden" name="overallRating" id="overallRating">
-                        </div>
-                        
-                        <div class="rating-item">
-                            <label>Quality of Work</label>
-                            <div class="star-rating" data-rating="quality">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
+                            
+                            <div class="rating-item">
+                                <label for="qualityRating">Quality of Work <span class="required">*</span></label>
+                                <select id="qualityRating" name="qualityRating" required>
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Average</option>
+                                    <option value="2">2 - Poor</option>
+                                    <option value="1">1 - Very Poor</option>
+                                </select>
                             </div>
-                            <input type="hidden" name="qualityRating" id="qualityRating">
-                        </div>
 
-                        <div class="rating-item">
-                            <label>Communication</label>
-                            <div class="star-rating" data-rating="communication">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
+                            <div class="rating-item">
+                                <label for="communicationRating">Communication <span class="required">*</span></label>
+                                <select id="communicationRating" name="communicationRating" required>
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Average</option>
+                                    <option value="2">2 - Poor</option>
+                                    <option value="1">1 - Very Poor</option>
+                                </select>
                             </div>
-                            <input type="hidden" name="communicationRating" id="communicationRating">
-                        </div>
 
-                        <div class="rating-item">
-                            <label>Timeline Adherence</label>
-                            <div class="star-rating" data-rating="timeline">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
+                            <div class="rating-item">
+                                <label for="timelineRating">Timeline Adherence <span class="required">*</span></label>
+                                <select id="timelineRating" name="timelineRating" required>
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Average</option>
+                                    <option value="2">2 - Poor</option>
+                                    <option value="1">1 - Very Poor</option>
+                                </select>
                             </div>
-                            <input type="hidden" name="timelineRating" id="timelineRating">
-                        </div>
 
-                        <div class="rating-item">
-                            <label>Safety Standards</label>
-                            <div class="star-rating" data-rating="safety">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
+                            <div class="rating-item">
+                                <label for="safetyRating">Safety Standards <span class="required">*</span></label>
+                                <select id="safetyRating" name="safetyRating" required>
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Average</option>
+                                    <option value="2">2 - Poor</option>
+                                    <option value="1">1 - Very Poor</option>
+                                </select>
                             </div>
-                            <input type="hidden" name="safetyRating" id="safetyRating">
-                        </div>
 
-                        <div class="rating-item">
-                            <label>Professionalism</label>
-                            <div class="star-rating" data-rating="professionalism">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
-                            </div>
-                            <input type="hidden" name="professionalismRating" id="professionalismRating">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">🔍 Specific Observations</h2>
-                    
-                    <div class="form-group">
-                        <label>What impressed you most during the visit?</label>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="impressed1" name="impressed" value="quality-materials">
-                                <label for="impressed1">Quality of Materials</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="impressed2" name="impressed" value="skilled-workers">
-                                <label for="impressed2">Skilled Workforce</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="impressed3" name="impressed" value="safety-measures">
-                                <label for="impressed3">Safety Measures</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="impressed4" name="impressed" value="organization">
-                                <label for="impressed4">Site Organization</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="impressed5" name="impressed" value="progress-speed">
-                                <label for="impressed5">Progress Speed</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="impressed6" name="impressed" value="cleanliness">
-                                <label for="impressed6">Site Cleanliness</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Areas that need improvement:</label>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="improve1" name="improvements" value="communication">
-                                <label for="improve1">Communication</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="improve2" name="improvements" value="timeline">
-                                <label for="improve2">Timeline Management</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="improve3" name="improvements" value="safety">
-                                <label for="improve3">Safety Protocols</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="improve4" name="improvements" value="organization">
-                                <label for="improve4">Site Organization</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="improve5" name="improvements" value="quality-control">
-                                <label for="improve5">Quality Control</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="improve6" name="improvements" value="waste-management">
-                                <label for="improve6">Waste Management</label>
+                            <div class="rating-item">
+                                <label for="professionalismRating">Professionalism <span class="required">*</span></label>
+                                <select id="professionalismRating" name="professionalismRating" required>
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Average</option>
+                                    <option value="2">2 - Poor</option>
+                                    <option value="1">1 - Very Poor</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <h2 class="section-title">💬 Detailed Feedback</h2>
-                    
-                    <div class="form-group">
-                        <label for="positiveAspects">What did you like most about this builder's work?</label>
-                        <textarea id="positiveAspects" name="positiveAspects" placeholder="Please share specific positive observations..."></textarea>
-                    </div>
+                    <div class="section-header">🔍 Specific Observations</div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>What impressed you most during the visit?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impressed1" name="impressed" value="Quality of Materials">
+                                    <label for="impressed1">Quality of Materials</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impressed2" name="impressed" value="Skilled Workforce">
+                                    <label for="impressed2">Skilled Workforce</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impressed3" name="impressed" value="Safety Measures">
+                                    <label for="impressed3">Safety Measures</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impressed4" name="impressed" value="Site Organization">
+                                    <label for="impressed4">Site Organization</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impressed5" name="impressed" value="Progress Speed">
+                                    <label for="impressed5">Progress Speed</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impressed6" name="impressed" value="Site Cleanliness">
+                                    <label for="impressed6">Site Cleanliness</label>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="concernsIssues">Any concerns or issues observed?</label>
-                        <textarea id="concernsIssues" name="concernsIssues" placeholder="Please describe any concerns or areas for improvement..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="suggestions">Suggestions for improvement:</label>
-                        <textarea id="suggestions" name="suggestions" placeholder="How can this builder improve their service or work quality?"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="additionalComments">Additional Comments:</label>
-                        <textarea id="additionalComments" name="additionalComments" placeholder="Any other feedback or observations you'd like to share..."></textarea>
+                        <div class="form-group">
+                            <label>Areas that need improvement:</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="improve1" name="improvements" value="Communication">
+                                    <label for="improve1">Communication</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="improve2" name="improvements" value="Timeline Management">
+                                    <label for="improve2">Timeline Management</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="improve3" name="improvements" value="Safety Protocols">
+                                    <label for="improve3">Safety Protocols</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="improve4" name="improvements" value="Site Organization">
+                                    <label for="improve4">Site Organization</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="improve5" name="improvements" value="Quality Control">
+                                    <label for="improve5">Quality Control</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="improve6" name="improvements" value="Waste Management">
+                                    <label for="improve6">Waste Management</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <h2 class="section-title">🤝 Recommendation</h2>
-                    
-                    <div class="form-group">
-                        <label for="recommend">Would you recommend this builder to others?</label>
-                        <select id="recommend" name="recommend" required>
-                            <option value="">Please select</option>
-                            <option value="definitely-yes">Definitely Yes</option>
-                            <option value="probably-yes">Probably Yes</option>
-                            <option value="maybe">Maybe</option>
-                            <option value="probably-no">Probably No</option>
-                            <option value="definitely-no">Definitely No</option>
-                        </select>
+                    <div class="section-header">💭 Additional Comments</div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="additionalComments">Share any additional feedback, suggestions, or observations:</label>
+                            <textarea id="additionalComments" name="additionalComments" placeholder="Your detailed feedback helps us improve our services..." rows="4"></textarea>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="futureWork">Would you consider using this builder for future projects?</label>
-                        <select id="futureWork" name="futureWork" required>
-                            <option value="">Please select</option>
-                            <option value="definitely-yes">Definitely Yes</option>
-                            <option value="probably-yes">Probably Yes</option>
-                            <option value="maybe">Maybe</option>
-                            <option value="probably-no">Probably No</option>
-                            <option value="definitely-no">Definitely No</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="submit-section">
-                    <button type="submit" class="submit-btn">Submit Feedback</button>
                 </div>
             </form>
+        </div>
+
+        <div class="submit-section">
+            <button type="button" class="submit-btn" onclick="submitForm()">
+                Submit Feedback
+            </button>
         </div>
     </div>
 
     <script>
-        // Detect mobile device
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        
-        // Enhanced star rating functionality for mobile
-        document.querySelectorAll('.star-rating').forEach(rating => {
-            const stars = rating.querySelectorAll('.star');
-            const ratingType = rating.dataset.rating;
-            const hiddenInput = document.getElementById(ratingType + 'Rating');
-            let isDragging = false;
-
-            const updateStars = (selectedIndex) => {
-                stars.forEach((s, i) => {
-                    s.classList.toggle('active', i <= selectedIndex);
-                    s.style.color = i <= selectedIndex ? '#ffd700' : '#ddd';
-                });
-            };
-
-            const handleRating = (index) => {
-                const value = index + 1;
-                hiddenInput.value = value;
-                updateStars(index);
-                
-                // Haptic feedback on iOS
-                if (isIOS && window.navigator.vibrate) {
-                    window.navigator.vibrate(50);
-                }
-            };
-
-            stars.forEach((star, index) => {
-                // Touch events for mobile
-                star.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    isDragging = true;
-                    handleRating(index);
-                }, { passive: false });
-
-                star.addEventListener('touchend', (e) => {
-                    e.preventDefault();
-                    isDragging = false;
-                }, { passive: false });
-
-                star.addEventListener('touchmove', (e) => {
-                    if (isDragging) {
-                        e.preventDefault();
-                        const touch = e.touches[0];
-                        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-                        if (element && element.classList.contains('star')) {
-                            const touchIndex = Array.from(stars).indexOf(element);
-                            if (touchIndex !== -1) {
-                                updateStars(touchIndex);
-                            }
-                        }
-                    }
-                }, { passive: false });
-
-                // Click events for desktop
-                star.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    handleRating(index);
-                });
-
-                // Hover effects (only on non-touch devices)
-                if (!isMobile) {
-                    star.addEventListener('mouseenter', () => {
-                        updateStars(index);
-                    });
-
-                    rating.addEventListener('mouseleave', () => {
-                        const currentRating = parseInt(hiddenInput.value) || 0;
-                        updateStars(currentRating - 1);
-                    });
-                }
-            });
+        // Set today's date
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('visitDate').valueAsDate = new Date();
         });
 
-        // Enhanced checkbox interactions
-        document.querySelectorAll('.checkbox-item').forEach(item => {
-            const checkbox = item.querySelector('input[type="checkbox"]');
-            
-            item.addEventListener('click', (e) => {
-                if (e.target.type !== 'checkbox') {
-                    e.preventDefault();
-                    checkbox.checked = !checkbox.checked;
-                    
-                    // Trigger change event
-                    checkbox.dispatchEvent(new Event('change'));
-                    
-                    // Haptic feedback on mobile
-                    if (isMobile && window.navigator.vibrate) {
-                        window.navigator.vibrate(30);
-                    }
-                }
-            });
-
-            // Visual feedback on touch
-            item.addEventListener('touchstart', () => {
-                item.style.transform = 'scale(0.98)';
-            });
-
-            item.addEventListener('touchend', () => {
-                item.style.transform = 'scale(1)';
-            });
-        });
-
-        // Form validation with mobile-friendly alerts
-        const validateForm = () => {
+        function validateForm() {
             const requiredFields = document.querySelectorAll('[required]');
             let isValid = true;
             let firstInvalidField = null;
@@ -608,396 +526,109 @@
                 }
             });
 
-            // Check if at least one rating is provided
-            const ratings = document.querySelectorAll('input[type="hidden"][id$="Rating"]');
-            let hasRating = false;
-            ratings.forEach(rating => {
-                if (rating.value) {
-                    hasRating = true;
-                }
-            });
-
-            if (!hasRating) {
-                isValid = false;
-                const firstRatingSection = document.querySelector('.rating-group');
-                if (firstRatingSection && !firstInvalidField) {
-                    firstInvalidField = firstRatingSection;
-                }
-            }
-
             if (!isValid && firstInvalidField) {
-                // Smooth scroll to first invalid field
-                firstInvalidField.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-                
-                // Focus the field if it's an input
-                if (firstInvalidField.focus) {
-                    setTimeout(() => firstInvalidField.focus(), 500);
-                }
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => firstInvalidField.focus(), 300);
             }
 
             return isValid;
-        };
+        }
 
-        // Enhanced form submission
-        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
-            e.preventDefault();
+        function showMessage(message, isSuccess = false) {
+            const successEl = document.getElementById('successMessage');
+            const errorEl = document.getElementById('errorMessage');
             
+            successEl.style.display = 'none';
+            errorEl.style.display = 'none';
+            
+            if (isSuccess) {
+                successEl.innerHTML = message;
+                successEl.style.display = 'block';
+            } else {
+                errorEl.innerHTML = message;
+                errorEl.style.display = 'block';
+            }
+            
+            (isSuccess ? successEl : errorEl).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        async function submitForm() {
             if (!validateForm()) {
-                // Show mobile-friendly error message
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'error-message';
-                errorMsg.style.cssText = `
-                    background: #fee;
-                    color: #c33;
-                    padding: 15px;
-                    border-radius: 12px;
-                    margin-bottom: 20px;
-                    text-align: center;
-                    font-weight: 600;
-                    border: 2px solid #fcc;
-                `;
-                errorMsg.textContent = 'Please fill in all required fields and provide at least one rating.';
-                
-                const form = document.getElementById('feedbackForm');
-                const existingError = document.querySelector('.error-message');
-                if (existingError) {
-                    existingError.remove();
-                }
-                form.insertBefore(errorMsg, form.firstChild);
-                
-                // Auto-hide error message
-                setTimeout(() => {
-                    if (errorMsg.parentNode) {
-                        errorMsg.remove();
-                    }
-                }, 5000);
-                
+                showMessage('❌ Please fill in all required fields marked with *');
                 return;
             }
-            
-            // Show loading state
+
             const submitBtn = document.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
+            submitBtn.innerHTML = '<div class="spinner"></div> Submitting...';
             submitBtn.disabled = true;
-            
-            // Collect all form data
-            const formData = new FormData(e.target);
-            const data = {};
-            
-            // Handle regular form fields
-            for (let [key, value] of formData.entries()) {
-                if (data[key]) {
-                    if (Array.isArray(data[key])) {
-                        data[key].push(value);
-                    } else {
-                        data[key] = [data[key], value];
-                    }
-                } else {
-                    data[key] = value;
-                }
-            }
 
-            // Handle checkboxes
-            const impressed = [];
-            const improvements = [];
-            
-            document.querySelectorAll('input[name="impressed"]:checked').forEach(cb => {
-                impressed.push(cb.value);
-            });
-            
-            document.querySelectorAll('input[name="improvements"]:checked').forEach(cb => {
-                improvements.push(cb.value);
-            });
-
-            data.impressed = impressed;
-            data.improvements = improvements;
-
-            // Simulate API call
-            setTimeout(() => {
-                // In a real application, you would send this data to a server
-                console.log('Feedback Data:', data);
-                
-                // Show success message with animation
-                const successMsg = document.getElementById('successMessage');
-                successMsg.innerHTML = '✅ Thank you! Your feedback has been submitted successfully.<br><small>You can close this page now.</small>';
-                successMsg.style.display = 'block';
-                document.getElementById('feedbackForm').style.display = 'none';
-                
-                // Scroll to top smoothly
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // Haptic feedback
-                if (isMobile && window.navigator.vibrate) {
-                    window.navigator.vibrate([100, 50, 100]);
-                }
-            }, 1000);
-        });
-
-        // Auto-save form data to prevent loss (using sessionStorage for privacy)
-        const saveFormData = () => {
-            const form = document.getElementById('feedbackForm');
-            const formData = new FormData(form);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            
-            // Save ratings
-            document.querySelectorAll('input[type="hidden"][id$="Rating"]').forEach(input => {
-                if (input.value) {
-                    data[input.name] = input.value;
-                }
-            });
-            
-            sessionStorage.setItem('feedbackFormData', JSON.stringify(data));
-        };
-
-        // Load saved form data
-        const loadFormData = () => {
             try {
-                const savedData = sessionStorage.getItem('feedbackFormData');
-                if (savedData) {
-                    const data = JSON.parse(savedData);
-                    Object.keys(data).forEach(key => {
-                        const field = document.querySelector(`[name="${key}"]`);
-                        if (field && field.type !== 'hidden') {
-                            field.value = data[key];
-                        } else if (key.endsWith('Rating')) {
-                            const hiddenInput = document.getElementById(key);
-                            if (hiddenInput) {
-                                hiddenInput.value = data[key];
-                                const ratingType = key.replace('Rating', '');
-                                const stars = document.querySelectorAll(`[data-rating="${ratingType}"] .star`);
-                                stars.forEach((star, index) => {
-                                    star.classList.toggle('active', index < parseInt(data[key]));
-                                });
-                            }
-                        }
-                    });
-                }
-            } catch (error) {
-                console.log('Could not load saved form data');
-            }
-        };
-
-        // Auto-save on input changes
-        document.addEventListener('input', saveFormData);
-        document.addEventListener('change', saveFormData);
-
-        // Initialize form
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set today's date as default
-            document.getElementById('visitDate').valueAsDate = new Date();
-            
-            // Load any saved form data
-            loadFormData();
-            
-            // Optimize for iOS Safari
-            if (isIOS) {
-                // Prevent zoom on input focus
-                const inputs = document.querySelectorAll('input, select, textarea');
+                // Collect form data
+                const formData = new FormData();
+                const form = document.getElementById('feedbackForm');
+                
+                // Add all form fields
+                const inputs = form.querySelectorAll('input, select, textarea');
                 inputs.forEach(input => {
-                    input.addEventListener('focus', () => {
-                        input.style.fontSize = '16px';
-                    });
-                });
-                
-                // Fix viewport on orientation change
-                window.addEventListener('orientationchange', () => {
-                    setTimeout(() => {
-                        window.scrollTo(0, 0);
-                    }, 500);
-                });
-            }
-            
-            // Add visual feedback for form interactions
-            const interactiveElements = document.querySelectorAll('input, select, textarea, .submit-btn');
-            interactiveElements.forEach(element => {
-                element.addEventListener('touchstart', () => {
-                    element.style.opacity = '0.8';
-                });
-                
-                element.addEventListener('touchend', () => {
-                    element.style.opacity = '1';
-                });
-                
-                element.addEventListener('touchcancel', () => {
-                    element.style.opacity = '1';
-                });
-            });
-            
-            // Enhanced accessibility
-            document.querySelectorAll('.star').forEach(star => {
-                star.setAttribute('role', 'button');
-                star.setAttribute('tabindex', '0');
-                star.setAttribute('aria-label', `Rate ${star.dataset.value} stars`);
-                
-                // Keyboard navigation
-                star.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        star.click();
-                    }
-                });
-            });
-            
-            // Add swipe gesture support for rating (mobile)
-            if (isMobile) {
-                document.querySelectorAll('.star-rating').forEach(rating => {
-                    let startX = 0;
-                    let currentX = 0;
-                    
-                    rating.addEventListener('touchstart', (e) => {
-                        startX = e.touches[0].clientX;
-                    });
-                    
-                    rating.addEventListener('touchmove', (e) => {
-                        e.preventDefault();
-                        currentX = e.touches[0].clientX;
-                        const rect = rating.getBoundingClientRect();
-                        const percentage = (currentX - rect.left) / rect.width;
-                        const starIndex = Math.floor(percentage * 5);
-                        
-                        if (starIndex >= 0 && starIndex < 5) {
-                            const stars = rating.querySelectorAll('.star');
-                            stars.forEach((star, index) => {
-                                star.style.color = index <= starIndex ? '#ffd700' : '#ddd';
-                            });
-                        }
-                    });
-                    
-                    rating.addEventListener('touchend', (e) => {
-                        const rect = rating.getBoundingClientRect();
-                        const percentage = (currentX - rect.left) / rect.width;
-                        const starIndex = Math.floor(percentage * 5);
-                        
-                        if (starIndex >= 0 && starIndex < 5) {
-                            const ratingType = rating.dataset.rating;
-                            const hiddenInput = document.getElementById(ratingType + 'Rating');
-                            hiddenInput.value = starIndex + 1;
-                            
-                            const stars = rating.querySelectorAll('.star');
-                            stars.forEach((star, index) => {
-                                star.classList.toggle('active', index <= starIndex);
-                                star.style.color = index <= starIndex ? '#ffd700' : '#ddd';
-                            });
-                            
-                            if (window.navigator.vibrate) {
-                                window.navigator.vibrate(50);
+                    if (input.type === 'checkbox') {
+                        if (input.checked) {
+                            const existingValue = formData.get(input.name);
+                            if (existingValue) {
+                                formData.set(input.name, existingValue + ', ' + input.value);
+                            } else {
+                                formData.set(input.name, input.value);
                             }
                         }
-                    });
+                    } else if (input.value) {
+                        formData.set(input.name, input.value);
+                    }
                 });
-            }
-            
-            // Progress indicator
-            const createProgressIndicator = () => {
-                const sections = document.querySelectorAll('.section');
-                const progressContainer = document.createElement('div');
-                progressContainer.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    height: 4px;
-                    background: rgba(255,255,255,0.3);
-                    z-index: 1000;
-                    transition: opacity 0.3s ease;
-                `;
-                
-                const progressBar = document.createElement('div');
-                progressBar.style.cssText = `
-                    height: 100%;
-                    background: linear-gradient(90deg, #667eea, #764ba2);
-                    width: 0%;
-                    transition: width 0.3s ease;
-                `;
-                
-                progressContainer.appendChild(progressBar);
-                document.body.appendChild(progressContainer);
-                
-                const updateProgress = () => {
-                    const scrollTop = window.pageYOffset;
-                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    const scrolled = (scrollTop / docHeight) * 100;
-                    progressBar.style.width = Math.min(scrolled, 100) + '%';
-                };
-                
-                window.addEventListener('scroll', updateProgress);
-                updateProgress();
-            };
-            
-            // Add progress indicator for mobile
-            if (isMobile) {
-                createProgressIndicator();
-            }
-            
-            // Handle network status for offline capability
-            const handleOffline = () => {
-                const offlineNotice = document.createElement('div');
-                offlineNotice.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    left: 20px;
-                    right: 20px;
-                    background: #ff6b6b;
-                    color: white;
-                    padding: 12px;
-                    border-radius: 8px;
-                    text-align: center;
-                    z-index: 1001;
-                    font-weight: 600;
-                `;
-                offlineNotice.textContent = '📡 You are offline. Your responses will be saved locally.';
-                document.body.appendChild(offlineNotice);
-                
-                setTimeout(() => {
-                    if (offlineNotice.parentNode) {
-                        offlineNotice.remove();
+
+                // Add form metadata
+                formData.set('_replyto', 'architectbharat@gmail.com');
+                formData.set('_subject', `Site Visit Feedback - ${formData.get('builderCompany') || 'Dwarkesh Dham'}`);
+                formData.set('_next', window.location.href);
+                formData.set('Submission Time', new Date().toLocaleString());
+
+                console.log('Submitting to architectbharat@gmail.com...');
+
+                // Submit using Formspree
+                const response = await fetch('https://formspree.io/f/xpzvgdnb', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                }, 5000);
-            };
-            
-            const handleOnline = () => {
-                const onlineNotice = document.createElement('div');
-                onlineNotice.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    left: 20px;
-                    right: 20px;
-                    background: #51cf66;
-                    color: white;
-                    padding: 12px;
-                    border-radius: 8px;
-                    text-align: center;
-                    z-index: 1001;
-                    font-weight: 600;
-                `;
-                onlineNotice.textContent = '✅ Back online! Your data is safe.';
-                document.body.appendChild(onlineNotice);
+                });
+
+                if (response.ok) {
+                    showMessage(`
+                        ✅ <strong>Thank you!</strong><br>
+                        Your feedback has been submitted successfully to <strong>architectbharat@gmail.com</strong>.<br>
+                        <small>We appreciate your time and will review your feedback shortly.</small>
+                    `, true);
+                    
+                    // Hide form after successful submission
+                    form.style.display = 'none';
+                    document.querySelector('.submit-section').style.display = 'none';
+                } else {
+                    throw new Error('Submission failed');
+                }
+
+            } catch (error) {
+                console.error('Form submission error:', error);
                 
-                setTimeout(() => {
-                    if (onlineNotice.parentNode) {
-                        onlineNotice.remove();
-                    }
-                }, 3000);
-            };
-            
-            window.addEventListener('offline', handleOffline);
-            window.addEventListener('online', handleOnline);
-            
-            // Cleanup saved data on successful submission
-            document.getElementById('feedbackForm').addEventListener('submit', () => {
-                setTimeout(() => {
-                    sessionStorage.removeItem('feedbackFormData');
-                }, 2000);
-            });
-        });
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                showMessage(`
+                    ❌ <strong>Submission Error</strong><br>
+                    Please email your feedback directly to: <strong>architectbharat@gmail.com</strong><br>
+                    <small>Or try submitting again in a few moments.</small>
+                `);
+            }
+        }
     </script>
-            
 </body>
 </html>
